@@ -34,7 +34,7 @@ class Figure:
             return self.__sides
 
     def __len__(self):
-        raise NotImplementedError("Perimeter must be implemented by subclass")
+        return sum(self.__sides)
 
     def set_sides(self, *new_sides):
         if self.__is_valid_sides(*new_sides):
@@ -44,52 +44,42 @@ class Figure:
 
 class Circle(Figure):
     sides_count = 1
+    __radius = 0
 
-    def __init__(self, __color=(0, 0, 0), __sides=[]):
-        super().__init__(__color, __sides)
-        self.side = __sides
-        self.radius = self.side / (2 * math.pi)
+    def __init__(self, __color=(0, 0, 0), *args):
+        super().__init__(__color, *args)
+        self.radius = round(super().get_sides()[0]/(3.14*2), 2)
+
 
     def get_square(self):
         return self.radius ** 2 * math.pi
-
-    def __len__(self):
-        # Длина окружности
-        return self.side
 
 
 class Cube(Figure):
     sides_count = 12
 
-    def __init__(self, __color=(0, 0, 0), __sides=[]):
-        super().__init__(__color, __sides)
-        self.side = __sides
+    def __init__(self, __color=(0, 0, 0), *args):
+        super().__init__(__color, *args)
 
     def get_volume(self):
+        self.side = super().get_sides()[0]
         return self.side ** 3
-
-    def __len__(self):
-        # Периметр куба
-        return 12 * self.side
 
 
 
 class Triangle(Figure):
     sides_count = 3
 
-    def __init__(self, __color=(0, 0, 0), __sides=[]):
-        super().__init__(__color, __sides)
-        self.side1 = __sides
-        self.side2 = __sides
-        self.side3 = __sides
-
+    def __init__(self, __color=(0, 0, 0), *args):
+        super().__init__(__color, *args)
 
     def get_square(self):
+        self.side1 = super().get_sides()[0]
+        self.side2 = super().get_sides()[1]
+        self.side3 = super().get_sides()[2]
         s = (self.side1 + self.side2 + self.side3) / 2
         return math.sqrt(s * (s - self.side1) * (s - self.side2) * (s - self.side3))
 
-    def __len__(self):
-        return self.side1 + self.side2 + self.side3
 
 
 
@@ -113,6 +103,8 @@ print(len(circle1))
 
 # Проверка объёма (куба):
 print(cube1.get_volume())
+
+
 
 
 
