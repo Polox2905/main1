@@ -13,7 +13,6 @@ def is_prime(function):
 
 @is_prime
 def sum_three(a, b, c):
-    """Суммирует три числа."""
     return a + b + c
 
 result = sum_three(2, 3, 6)
