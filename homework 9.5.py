@@ -22,6 +22,8 @@ class Iterator:
             raise StopIteration
         elif self.step < 0 and self.pointer <= self.stop:
             raise StopIteration
+        elif self.step > 1 and self.pointer + self.step >= self.stop:
+            raise StopIteration
         else:
             self.pointer += self.step
         return self.pointer
