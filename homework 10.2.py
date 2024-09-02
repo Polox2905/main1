@@ -25,7 +25,7 @@ class Knight(threading.Thread):
                 print("Все битвы закончились!")
 
 if __name__ == "__main__":
-    knights = []  # Список рыцарей
+    knights = []
     knights.append(Knight('Sir Lancelot', 10))
     knights.append(Knight("Sir Galahad", 20))
     for knight in knights:
