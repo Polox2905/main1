@@ -32,10 +32,13 @@ kbIn.add(btIn3)
 kbIn.add(btIn4)
 
 PRODUCTS = get_all_products()
-#result = [(product['title'], product['description'], product['price']) for product in PRODUCTS]
+#result = [(f'{product['title']}, {product['description']}, {product['price']}') for product in PRODUCTS]
+result = [(product['title'], product['description'], product['price']) for product in PRODUCTS]
 images = ['Images/im1.png', 'Images/im2.png', 'Images/im3.png', 'Images/im4.png']
-#product_descriptions = [f'Название: {product[0]}\nОписание: {product[1]}\nЦена: {product[2]}' for i, product in
-#                        result]
+product_descriptions1 = f'Название: {result[0][0]} | Описание: {result[0][1]} | Цена: {result[0][2]}'
+product_descriptions2 = f'Название: {result[1][0]} | Описание: {result[1][1]} | Цена: {result[1][2]}'
+product_descriptions3 = f'Название: {result[2][0]} | Описание: {result[2][1]} | Цена: {result[2][2]}'
+product_descriptions4 = f'Название: {result[3][0]} | Описание: {result[3][1]} | Цена: {result[3][2]}'
 
 class UserState(StatesGroup):
     cal = State()
@@ -86,13 +89,13 @@ async def get_buying_list(message: types.Message):
             open(images[1], "rb") as img2, \
             open(images[2], "rb") as img3, \
             open(images[3], "rb") as img4:
-        await message.answer(product_descriptions[0])
+        await message.answer(product_descriptions1)
         await message.answer_photo(img1)
-        await message.answer(product_descriptions[1])
+        await message.answer(product_descriptions2)
         await message.answer_photo(img2)
-        await message.answer(product_descriptions[2])
+        await message.answer(product_descriptions3)
         await message.answer_photo(img3)
-        await message.answer(product_descriptions[3])
+        await message.answer(product_descriptions4)
         await message.answer_photo(img4)
     await message.answer('Выберите продукт для покупки:', reply_markup=kbIn)
 
