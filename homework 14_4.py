@@ -8,7 +8,7 @@ import asyncio
 from crud_functions import get_all_products
 
 
-api = "7633593313:AAFdKTe2kGMEz1f5R4bLVy4_zT1J9ADv8K4"
+api = ""
 bot = Bot(token=api)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
@@ -32,10 +32,10 @@ kbIn.add(btIn3)
 kbIn.add(btIn4)
 
 PRODUCTS = get_all_products()
-result = [(product['title'], product['description'], product['price']) for product in PRODUCTS]
+#result = [(product['title'], product['description'], product['price']) for product in PRODUCTS]
 images = ['Images/im1.png', 'Images/im2.png', 'Images/im3.png', 'Images/im4.png']
-product_descriptions = [f'Название: {product[0]}\nОписание: {product[1]}\nЦена: {product[2]}' for i, product in
-                        result]
+#product_descriptions = [f'Название: {product[0]}\nОписание: {product[1]}\nЦена: {product[2]}' for i, product in
+#                        result]
 
 class UserState(StatesGroup):
     cal = State()
